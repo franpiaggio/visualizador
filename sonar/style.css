@@ -1,0 +1,138 @@
+:root {
+  --ink: #04060b;
+  --bone: #e9e2d4;
+  --mist: rgba(200, 214, 230, 0.55);
+  --faint: rgba(200, 214, 230, 0.28);
+  --line: rgba(200, 214, 230, 0.12);
+  --mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--ink);
+  color: var(--bone);
+  overflow: hidden;
+  font-family: var(--mono);
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* viñeta suave encima del 3D */
+#vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at 50% 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+/* ───────── panel de código (como strudel.cc: código sobre la visual) ───────── */
+#code {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(560px, 44vw);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 72px 0 120px;
+  background: linear-gradient(90deg, rgba(4, 6, 11, 0.78) 0%, rgba(4, 6, 11, 0.55) 70%, rgba(4, 6, 11, 0) 100%);
+  transition: transform 0.9s cubic-bezier(.2, .7, .1, 1), opacity 0.9s;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 214, 230, 0.15) transparent;
+  z-index: 2;
+}
+/* encuadre cinematográfico */
+.band {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 9vh;
+  background: #010205;
+  z-index: 2;
+  pointer-events: none;
+}
+.band.top { top: 0; }
+.band.bottom { bottom: 0; }
+
+/* el editor real queda guardado: tecla c para editar */
+body:not(.show-editor) #code { transform: translateX(-104%); opacity: 0; pointer-events: none; }
+
+/* el código dibujado dentro de la escena */
+#codeart {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  image-rendering: pixelated;
+  transition: opacity 0.6s;
+}
+body.show-editor #codeart { opacity: 0.35; }
+
+#code strudel-editor { display: none; }
+
+/* contenedor que inserta <strudel-editor> */
+#code > div,
+#code .cm-editor,
+#code .cm-scroller,
+#code .cm-gutters {
+  background: transparent !important;
+}
+#code .cm-editor { outline: none !important; }
+#code .cm-gutters { border: none !important; color: rgba(200, 214, 230, 0.18) !important; }
+#code .cm-content { caret-color: var(--bone) !important; }
+#code .cm-line { text-shadow: 0 0 12px rgba(4, 6, 11, 0.9); }
+
+/* marca de capa activa en el margen del código */
+.cm-layer-pulse { transition: background 0.3s; }
+
+/* ───────── barras de capas (sin texto) ───────── */
+#legend {
+  position: fixed;
+  right: 28px;
+  bottom: calc(4.5vh - 20px);
+  z-index: 3;
+  display: grid;
+  gap: 4px;
+  width: 72px;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+body.hide-ui #legend { opacity: 0; }
+#legend .bar {
+  height: 1px;
+  background: var(--line);
+  position: relative;
+  transition: opacity 0.3s;
+}
+#legend .bar i {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 3px;
+  width: 0;
+  background: var(--c, var(--bone));
+  box-shadow: 0 0 8px var(--c, var(--bone));
+}
+
+#stage { cursor: grab; touch-action: none; }
+#stage:active { cursor: grabbing; }
+
+@media (max-width: 760px) {
+  #code { width: 100vw; background: rgba(4, 6, 11, 0.6); }
+  #legend { display: none; }
+}

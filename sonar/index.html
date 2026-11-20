@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonar — Strudel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="">
+  <canvas id="stage"></canvas>
+  <div id="vignette"></div>
+  <div class="band top"></div><div class="band bottom"></div>
+  <canvas id="codeart"></canvas>
+
+  <section id="code" aria-label="Código Strudel en ejecución">
+    <strudel-editor><!--
+setcpm(38)
+
+stack(
+
+  // MOTIVO PRINCIPAL
+  note(`
+    <
+      [e5 f#5 b4 e5]
+      [e5 a5 f#5 e5]
+      [d5 e5 b4 d5]
+      [b4 e5 f#5 ~]
+
+      [e5 f#5 b5 e5]
+      [a5 f#5 e5 b4]
+      [d5 e5 a5 f#5]
+      [b4 ~ e5 ~]
+
+      [f#5 a5 e5 f#5]
+      [e5 b5 a5 e5]
+      [d5 f#5 e5 b4]
+      [b4 e5 ~ f#5]
+
+      [e5 f#5 a5 b5]
+      [a5 e5 f#5 d5]
+      [b4 d5 e5 f#5]
+      [e5 ~ ~ ~]
+    >
+  `)
+  .sound("piano")
+  .release(2.7)
+  .gain(.38)
+  .room(.85)
+  .delay(.28)
+  .delaytime(.375)
+  .delayfeedback(.38),
+
+
+  // ARPEGIO INFERIOR
+  note(`
+    <
+      [e3 b3 f#4 b4]
+      [c3 g3 b3 e4]
+      [d3 a3 e4 a4]
+      [b2 f#3 e4 a4]
+
+      [e3 b3 g4 b4]
+      [a2 e3 b3 e4]
+      [d3 a3 e4 f#4]
+      [b2 f#3 a3 e4]
+    >
+  `)
+  .sound("piano")
+  .release(3.2)
+  .gain(.20)
+  .room(.95)
+  .delay(.42)
+  .delaytime(.5)
+  .delayfeedback(.52),
+
+
+  // GRAN COLCHÓN
+  note(`
+    <
+      [e3 b3 f#4]
+      [c3 g3 e4]
+      [d3 a3 e4]
+      [b2 f#3 e4]
+
+      [e3 g3 b3]
+      [a2 e3 b3]
+      [d3 a3 e4]
+      [b2 e3 f#3]
+    >
+  `)
+  .sound("sawtooth")
+  .attack(2.5)
+  .release(8)
+  .gain(.055)
+  .lpf("<500 800 1100 650>")
+  .room(1)
+  .delay(.55)
+  .delaytime(.75)
+  .delayfeedback(.6),
+
+
+  // DRONE PROFUNDO
+  note(`
+    <
+      e2
+      ~
+      c2
+      ~
+      d2
+      ~
+      b1
+      ~
+
+      e2
+      ~
+      a1
+      ~
+      d2
+      ~
+      b1
+      ~
+    >
+  `)
+  .sound("sine")
+  .attack(2)
+  .release(8)
+  .gain(.11)
+  .lpf(300)
+  .room(1),
+
+
+  // NUBE AGUDA
+  note(`
+    <
+      ~ [b5 e6] ~ ~
+      [~ e6] ~ ~ b6
+      ~ ~ [a5 e6] ~
+      [f#6 ~] ~ ~ ~
+
+      ~ ~ [e6 b6] ~
+      [a5 ~] ~ e6 ~
+      ~ [d6 a6] ~ ~
+      [~ f#6] ~ b5 ~
+    >
+  `)
+  .sound("triangle")
+  .attack(.7)
+  .release(6)
+  .gain(.075)
+  .room(1)
+  .delay(.72)
+  .delaytime(.625)
+  .delayfeedback(.72)
+  .pan("<.15 .8 .3 .7>"),
+
+
+  // ECOS CASI COMO SONAR
+  note(`
+    <
+      ~ ~ e7 ~
+      ~ ~ ~ ~
+      ~ b6 ~ ~
+      ~ ~ ~ ~
+
+      f#7 ~ ~ ~
+      ~ ~ ~ ~
+      ~ ~ e7 ~
+      ~ ~ ~ ~
+
+      ~ a6 ~ ~
+      ~ ~ ~ ~
+      b7 ~ ~ ~
+      ~ ~ ~ ~
+
+      ~ ~ f#7 ~
+      ~ ~ ~ ~
+      e7 ~ ~ ~
+      ~ ~ ~ ~
+    >
+  `)
+  .sound("sine")
+  .release(.35)
+  .gain(.065)
+  .room(1)
+  .delay(.8)
+  .delaytime(.375)
+  .delayfeedback(.78)
+  .pan("<.1 .9 .25 .75>"),
+
+
+  // CHISPAS / REFLEJOS
+  note(`
+    <
+      ~ e7 ~ ~
+      ~ ~ ~ b7
+      f#7 ~ ~ ~
+      ~ ~ a6 ~
+
+      ~ ~ e7 ~
+      b6 ~ ~ ~
+      ~ ~ ~ f#7
+      ~ a7 ~ ~
+
+      e7 ~ ~ ~
+      ~ ~ b6 ~
+      ~ f#7 ~ ~
+      ~ ~ ~ e7
+    >
+  `)
+  .sound("triangle")
+  .release(.18)
+  .gain(.045)
+  .room(.95)
+  .delay(.75)
+  .delaytime(.25)
+  .delayfeedback(.76)
+  .pan("<.8 .15 .7 .3>"),
+
+
+  // MASA DE RUIDO RESPIRANDO
+  s(`
+    <
+      noise
+      ~
+      noise
+      ~
+
+      ~
+      noise
+      ~
+      noise
+    >
+  `)
+  .attack(1.5)
+  .release(4)
+  .gain(.025)
+  .lpf("<350 700 1200 500>")
+  .room(1)
+  .delay(.6)
+  .delaytime(.75)
+  .delayfeedback(.7)
+  .pan("<.2 .8>"),
+
+
+  // RUIDO AGUDO: polvo / electricidad
+  s(`
+    <
+      ~ ~ noise ~
+      ~ ~ ~ ~
+      ~ noise ~ ~
+      ~ ~ ~ ~
+
+      ~ ~ ~ noise
+      ~ ~ ~ ~
+      noise ~ ~ ~
+      ~ ~ ~ ~
+    >
+  `)
+  .attack(.02)
+  .release(.7)
+  .gain(.018)
+  .hpf(3500)
+  .room(1)
+  .delay(.82)
+  .delaytime(.5)
+  .delayfeedback(.78)
+  .pan("<.1 .9 .3 .75>"),
+
+
+  // PULSOS SUBGRAVES: no son batería,
+  // son "ondas" que aparecen desde abajo
+  note(`
+    <
+      e1 ~ ~ ~
+      ~ ~ ~ ~
+      ~ ~ b0 ~
+      ~ ~ ~ ~
+
+      ~ d1 ~ ~
+      ~ ~ ~ ~
+      a0 ~ ~ ~
+      ~ ~ ~ ~
+
+      ~ ~ c1 ~
+      ~ ~ ~ ~
+      ~ g0 ~ ~
+      ~ ~ ~ ~
+
+      e1 ~ ~ ~
+      ~ ~ ~ ~
+      ~ ~ b0 ~
+      ~ ~ ~ ~
+    >
+  `)
+  .sound("sine")
+  .attack(.4)
+  .release(4)
+  .gain(.14)
+  .lpf(150)
+  .room(1)
+)
+--></strudel-editor>
+  </section>
+
+  <div id="legend"></div>
+
+  <script src="vendor/ink/ink-studio.browser.js"></script>
+  <script src="https://unpkg.com/@strudel/repl@1.3.0/dist/index.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
