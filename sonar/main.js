@@ -310,7 +310,7 @@ async function boot() {
     if (st.code !== undefined || st.activeCode !== undefined) buildLegend(mirror.code);
   });
   ready = true;
-  if (wantStart) start();
+  if (wantStart || window.__early) start();
 }
 
 // ───────────────────────── controles ─────────────────────────

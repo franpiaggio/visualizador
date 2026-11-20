@@ -7,6 +7,14 @@ Colección de visualizadores para composiciones de [Strudel](https://strudel.cc)
 | [`sonar/`](sonar/README.md) | Marina nocturna: anillo de siete monolitos, uno por nota de Mi menor, más un blob central que frena la música. Ambient en Mi menor | Ink Studio (splats gaussianos pixel-art, WebGL2) + código dibujado en la escena |
 | [`sonar-v2/`](sonar-v2/README.md) | Sonar + ballena voladora en voxels que danza con los subgraves, faro lejano con haz giratorio, luna, vía láctea y fotografía cinematográfica | Igual que sonar + modelo en voxels animado por splats (vuelo, rolido, cola y aletas) |
 
+## En vivo
+
+- Índice: https://franpiaggio.github.io/visualizador/
+- Sonar: https://franpiaggio.github.io/visualizador/sonar/
+- Sonar v2: https://franpiaggio.github.io/visualizador/sonar-v2/
+
+Se publica con GitHub Pages desde la rama `main` (raíz). Un click en la escena arranca la música.
+
 ## Correr uno
 
 ```sh

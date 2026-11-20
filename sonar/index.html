@@ -307,6 +307,8 @@ stack(
 
   <div id="legend"></div>
 
+  <!-- un click antes de que cargue todo no se pierde: arranca apenas esté listo -->
+  <script>addEventListener('pointerdown', () => (window.__early = true), { once: true });</script>
   <script src="vendor/ink/ink-studio.browser.js"></script>
   <script src="https://unpkg.com/@strudel/repl@1.3.0/dist/index.js"></script>
   <script type="module" src="main.js"></script>
