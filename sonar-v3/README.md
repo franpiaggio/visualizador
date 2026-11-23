@@ -6,6 +6,7 @@ Tercera versión de [Sonar](../sonar/README.md), sobre [Sonar v2](../sonar-v2/RE
 - **Forma de yubarta** tomada de un video de referencia de animaciones de ballena (modelo 3D gris, sin textura): más esbelta, cabeza ancha y chata con tubérculos, garganta profunda con pliegues en abanico, pectorales largas, planas y blancas con el borde ondulado, pedúnculo fino y cola delgada en flecha.
 - **Sombreado suave:** la normal de cada voxel sale del gradiente de ocupación en un entorno de 5×5×5, en lugar de los 6 vecinos. Las aletas solo miran su propia parte.
 - **Batida como en el video:** vertical y concentrada en el último tercio. La cabeza queda casi quieta, el pedúnculo sube y baja y la cola llega con retraso. Las pectorales se mueven desde el hombro, que ahora es un punto fijo del modelo (`SHOULDER`).
+- **Arranca en cuadro:** la ballena empieza su vuelta (`phase: 4.46`) atrás del anillo, sobre el horizonte y cerca del faro, cruzando hacia la derecha. Se la ve desde el primer cuadro, sin esperar a que entre.
 - **Sin las barras de capas** de abajo a la derecha. Los niveles por capa se siguen calculando (los usa la escena), pero no se dibujan.
 
 Para mirarla de cerca desde la consola: `SCENE.tune.follow = true; SCENE.tune.dist = 8; SCENE.whale.path.debugY = 5`.

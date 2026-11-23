@@ -228,7 +228,7 @@ export function createScene(canvas) {
   });
   const D = world.data;
   // la ballena nada en un círculo entre el anillo y el faro
-  const whale = createWhale(D, whaleRange, whaleMirror, { center: [LH_DIR[0] * 7, LH_DIR[1] * 7], rx: 15, rz: 10, height: 6.5, phase: 2.2 });
+  const whale = createWhale(D, whaleRange, whaleMirror, { center: [LH_DIR[0] * 7, LH_DIR[1] * 7], rx: 15, rz: 10, height: 6.5, phase: 4.46 }); // phase 4.46: arranca atrás del anillo, en el fondo del cuadro inicial, cruzando hacia la derecha
   // covarianza de cada splat de cielo: ancho a lo largo del cilindro, fino en vertical
   for (let k = skyStart, i = 0; k < skyEnd; k++, i++) {
     const [a, sT, sY] = skyShape[i];
